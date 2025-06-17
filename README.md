@@ -8,8 +8,9 @@ A high-quality, low-latency Opus audio codec external for Max/MSP, providing rea
 - **Low Latency**: 20ms frame size with ring buffer for smooth output
 - **High Quality**: Opus codec with configurable quality settings
 - **Click-free**: Advanced ring buffer system eliminates frame boundary artifacts
-- **Full Parameter Control**: Runtime adjustment of all codec parameters
+- **Message-based Control**: Reliable real-time parameter adjustment
 - **Stereo Processing**: Native stereo input/output support
+- **Dynamic Sample Rate**: Auto-adapts to host sample rate (8/12/16/24/48kHz)
 
 ## Quick Start
 
@@ -17,11 +18,15 @@ A high-quality, low-latency Opus audio codec external for Max/MSP, providing rea
 // Basic usage with default settings (32kbps, music mode)
 opuscodec~
 
-// Custom bitrate and complexity
+// Custom bitrate and complexity via arguments
 opuscodec~ 64000 8
 
-// Using attributes for full control
-opuscodec~ @bitrate 128000 @complexity 5 @mode music @framesize 20
+// Real-time control via messages
+opuscodec~
+|
+bitrate 128000
+complexity 5
+mode voice
 ```
 
 ## Parameters
