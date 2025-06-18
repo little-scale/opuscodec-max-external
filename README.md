@@ -75,22 +75,41 @@ Implements the same proven ring buffer architecture as the MP3 codec:
 
 ### Voice/Speech Processing
 ```max
-opuscodec~ @bitrate 16000 @mode voice @complexity 0 @framesize 20
+opuscodec~
+|
+bitrate 16000
+mode voice
+complexity 0
+framesize 20
 ```
 
 ### High-Quality Music
 ```max
-opuscodec~ @bitrate 128000 @mode music @complexity 8 @vbr 1
+opuscodec~
+|
+bitrate 128000
+mode music
+complexity 8
+vbr 1
 ```
 
 ### Network Streaming (Resilient)
 ```max
-opuscodec~ @bitrate 64000 @fec 1 @loss 5 @framesize 20
+opuscodec~
+|
+bitrate 64000
+fec 1
+loss 5
+framesize 20
 ```
 
 ### Low-Latency Application
 ```max
-opuscodec~ @bitrate 64000 @framesize 10 @complexity 3
+opuscodec~
+|
+bitrate 64000
+framesize 10
+complexity 3
 ```
 
 ## Message Commands
@@ -137,7 +156,7 @@ Frame Collection: Continuous → Ring Buffer → Continuous Output
 2. **20ms Frames**: Balance between latency and stability
 3. **Music Signal**: Better default for general audio content
 4. **CBR Mode**: More predictable than VBR for real-time use
-5. **Attributes**: Full parameter control via Max attribute system
+5. **Message System**: Reliable parameter control via Max messages (attributes abandoned)
 
 ### Build Requirements
 - **libopus 1.5.2**: Opus codec library (ARM64)
